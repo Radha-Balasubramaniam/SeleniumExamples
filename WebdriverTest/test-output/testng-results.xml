@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="15865" started-at="2019-02-10T16:35:27Z" finished-at="2019-02-10T16:35:43Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="15865" started-at="2019-02-10T16:35:27Z" finished-at="2019-02-10T16:35:43Z">
+      <class name="example.NewTest">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:example.NewTest@14acaea5]" name="beforeTest" is-config="true" duration-ms="3570" started-at="2019-02-10T22:05:27Z" finished-at="2019-02-10T22:05:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="testEasy()[pri:0, instance:example.NewTest@14acaea5]" name="testEasy" duration-ms="11757" started-at="2019-02-10T22:05:31Z" finished-at="2019-02-10T22:05:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEasy -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:example.NewTest@14acaea5]" name="afterTest" is-config="true" duration-ms="530" started-at="2019-02-10T22:05:43Z" finished-at="2019-02-10T22:05:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- example.NewTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
