@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression-suite" parallel="false">
+	<parameter name="browser" value="chrome" />
+	<parameter name="environment" value="!local" />
+	<parameter name="driverPath" value="drivers/chromedriver.exe" />
+	<parameter name="SuiteName" value="Regression-suite" />
+	<listeners>
+		<listener class-name='com.ca.tools.docops.utils.CustomTestListener' />
+	</listeners>
+	<test name="Test" group-by-instances="false">
+		<classes>
+			<class name="com.ca.tools.docops.tests.UserOperations" />
+			<class name="com.ca.tools.docops.tests.TestData" />
+			<class name="com.ca.tools.docops.tests.DocAdminOperations" />
+			<class name="com.ca.tools.docops.tests.AllAuthorOperations" />
+			<class name="com.ca.tools.docops.tests.DocReviewerOperations" />
+			<class name="com.ca.tools.docops.tests.ArticleOperations" />
+			<class name="com.ca.tools.docops.tests.Theme" />
+			<class name="com.ca.tools.docops.tests.Search" />
+		</classes>
+	</test>
+</suite>

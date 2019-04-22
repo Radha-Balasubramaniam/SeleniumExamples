@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke-suite" parallel="false">
+	<parameter name="browser" value="chrome"/>
+	<parameter name="environment" value="local" />
+	<parameter name="driverPath" value="/Users/balra06/DocOps2.0/chromedriver" />
+	<parameter name="SuiteName" value= "Smoke-suite" />
+	<listeners>
+		<listener class-name='com.ca.tools.docops.utils.CustomTestListener'/>
+	</listeners>
+	<test name="Test" group-by-instances="false">
+		<classes>
+	    	<class name="com.ca.tools.docops.tests.UserOperations" >
+		    	<methods>
+					<include name="createUsers()"/>
+				</methods>
+	    	</class>
+		
+			<class name="com.ca.tools.docops.tests.ArticleOperations">
+				<methods>
+					<include name="TC92452_createArticleAsDraft"/>
+					<include name="TC92454_createArticleAndPublish"/>
+					<include name="TC101200_movePublishedArticleToDraft"/>
+					<include name="TC92467_deleteChildArticleTest"/>
+					<include name="TC92472_accessExternalLinkFromTheArticle"/>
+					<include name="TC92471_accessAnotherArticleFromArticleBody"/>
+				</methods>
+			</class>
+		
+			<class name="com.ca.tools.docops.tests.DocAdminOperations" >
+				<methods>
+					<include name="TC92456_testDocAdminWorkFlow"/>
+				</methods>
+			</class>
+			
+			<class name="com.ca.tools.docops.tests.Theme">
+				<methods>
+					<include name="TC101416_Verify_Expand_And_Collapse_Links_in_ToC()"/>
+					<include name="TC102623_Verify_Whether_Selected_Article_Is_Highlighted_In_ToC()"/>
+				</methods>
+			</class>
+		
+			<class name="com.ca.tools.docops.tests.Search">
+				<methods>
+						<include name="TC92487_Basic_Search"/>
+				</methods>
+			</class> 
+		</classes>
+	</test>
+</suite>

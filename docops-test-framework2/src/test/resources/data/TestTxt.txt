@@ -1,0 +1,62 @@
+[08:19:03]The build is removed from the queue to be prepared for the start
+[08:19:04]Collecting changes in 2 VCS roots (10s)
+[08:19:15]Starting the build on the agent apim-teamcityagent17
+[08:19:15]Clearing temporary directory: /home/teamcity/BuildAgent/temp/buildTmp
+[08:19:15]Publishing internal artifacts (3s)
+[08:19:15]Checkout directory: /home/teamcity/BuildAgent/work/cc3df0a9202da839
+[08:19:15]Updating sources: auto checkout (on agent) (9s)
+[08:19:24]Step 1/3: Create repos dir, clone repos (Command Line) (5m:02s)
+[08:24:27]Step 2/3: Checkout repos, build and make zip (Command Line) (8m:40s)
+[08:33:08]**********************************************************
+[08:33:08]Upload and Scan with Veracode
+[08:33:08]**********************************************************
+[08:33:08]
+
+[08:33:08]
+[Debug mode is on]
+[08:33:08]
+Can fail build?     true
+[08:33:08]Version information:   VeracodeJavaAPI v17.6.4.4 c201706231537
+[08:33:08]
+Parameter values from the Teamcity..
+[08:33:08]
+Application Name: API Gateway 9.3	Create Application: false	Team Name: 	Scan Name: TestRCScan2	Business Criticality: VeryHigh	Sandbox Name: Gateway93RCScan
+Create Sandbox: true	Upload Include Pattern: repos/*.tar	Upload Exclude Pattern: kerb-client-api-all-1.0.0-RC2.jar,servlet-api-resources-2.5.jar	Scan Include Pattern: repos/*.tar	Scan Exclude Pattern: kerb-client-api-all-1.0.0-RC2.jar,servlet-api-resources-2.5.jar	Filename Pattern: 
+Replacement Pattern: 	Wait for Scan to complete: false	Scan Timeout: 	Use Global Credentials: false	Credentials Type: ID/Key
+Veracode ID: 6d2e8810be04e7df9749cea394c6a848	Veracode Key: ********	Use Teamcity Project as the default Veracode Project: false
+Use Teamcity build number as the default Veracode Scan name: false	Use default description: false	Use Proxy: false
+Proxy Host: 	Proxy Port: 	Proxy Username: 	Proxy Password: 	Fail build: true	
+[08:33:08]processing parameter values from teamcity ...
+[08:33:08]processing files in workspace /home/teamcity/BuildAgent/work/cc3df0a9202da839
+[08:33:08]Completed processing files in workspace /home/teamcity/BuildAgent/work/cc3df0a9202da839
+[08:33:08]Veracode credentials are being read from the build context
+[08:33:08]adding filepaths to the arguments list
+[08:33:08]adding vId and vkey values to the arguments list 
+[08:33:08]
+Initiating the upload and scan with arguments: 
+ [-action, UploadAndScan, -appname, API Gateway 9.3, -createprofile, false, -criticality, VeryHigh, -version, TestRCScan2, -sandboxname, Gateway93RCScan, -createsandbox, true, -include, repos/*.tar, -exclude, kerb-client-api-all-1.0.0-RC2.jar,servlet-api-resources-2.5.jar, -filepath, /home/teamcity/BuildAgent/work/cc3df0a9202da839/repos/veracodegwtrunkscan.tar, -vid, 6d2e8810be04e7df9749cea394c6a848, -vkey, ********]
+[08:33:09]
+[17.11.28 08:33:09] 
+[17.11.28 08:33:09] Application profile "API Gateway 9.3" (appid=315078) was located.
+[08:33:10]
+[17.11.28 08:33:10] 
+[17.11.28 08:33:10] Sandbox "Gateway93RCScan" (sandboxid=483320) was located.
+[17.11.28 08:33:10] 
+[17.11.28 08:33:10] Attempting to create a new build with name "TestRCScan2".
+[08:33:11]
+[17.11.28 08:33:11] 
+[17.11.28 08:33:11] * Action "UploadAndScan" returned the following message:
+[17.11.28 08:33:11] * App not in state where new builds are allowed.
+[17.11.28 08:33:11] 
+[08:33:13]
+[17.11.28 08:33:13] 
+[17.11.28 08:33:13] * A scan is in progress or has failed to complete successfully. Wait for the current scan to complete or delete the failed scan from the Veracode Platform and try again.
+[17.11.28 08:33:13] UploadAndScan failure.
+[08:33:08]Step 3/3: Upload tar file to Veracode for scanning (Upload and Scan with Veracode) (5s)
+[08:33:13][Step 3/3] Error - code Returned from wrapper: 2
+[08:33:13][Step 3/3] The Upload and Scan with Veracode build step has marked the build as failed
+[08:33:13][Step 3/3] Step Upload tar file to Veracode for scanning (Upload and Scan with Veracode) failed
+[08:33:13]Publishing internal artifacts
+[08:33:13]Publishing artifacts (3s)
+[08:33:16]Unknown build problem reported on agent
+[08:33:16]Build finished
