@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Release Notes</title>
+
+    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.1/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",items:[{xtype:"container",itemId:"exportButton"}],launch:function(){this._loadMilestones(),console.log("Inside 'Launch")},_loadMilestones:function(){console.log("Inside 'Milestone"),this.milestoneComboBox=Ext.create("Rally.ui.combobox.MilestoneComboBox",{fieldLabel:"Milestone",hideLabel:!1,labelAlign:"right",listeners:{ready:function(t){this._loadData()},select:function(t,e){this._loadData()},scope:this}}),this.add(this.milestoneComboBox)},_loadData:function(){console.log("Inside Load");var t=[{property:"Milestones",operator:"=",value:this.milestoneComboBox.getRecord().get("_ref")},{property:"AffectsDoc",operator:"=",value:"true"},{property:"State",operator:"!=",value:"Fixed"},{property:"State",operator:"!=",value:"Closed"}];this.defectStore?(this.defectStore.setFilter(t),this.defectStore.load()):(this.defectStore=Ext.create("Rally.data.wsapi.Store",{model:"Defect",autoLoad:!0,filters:t,listeners:{load:function(t,e,o){this.myGrid||this._createGrid(t)},scope:this},fetch:["FormattedID","Name","Description","State","AffectsDoc"]}),console.log("Store Data :",this.defectStore))},_createGrid:function(t){console.log("Inside 'Grid"),this.myGrid=Ext.create("Rally.ui.grid.Grid",{store:t,columnCfgs:["FormattedID","Name","Description","State","AffectsDoc"]}),console.log("my grid",this.myGrid),this.add(this.myGrid);var e={xtype:"rallybutton",rtl:!0,iconCls:"icon-export",toolTip:"Export to Excel",menu:[{text:"Send to Doc",handler:function(){this._callConfluence(t)},scope:this}],layout:{type:"hbox",align:"right"},style:{float:"right"},scope:this};this.down("#exportButton").add(e)},_callConfluence:function(t){console.log("Inside Call Confluence");var e=t.data.items,o="<table>";o+="<thead><th><td>Issue Title</td><td>Issue Description</td></th></thead><tbody>";for(var i=0;i<e.length;i++)o+="<tr><td>"+this._html2text(e[i].data.Name)+"</td><td>"+this._html2text(e[i].data.Description)+"</td></tr>";o+="</tbody></table>",console.log(o.replace(/\s/g," "))},_html2text:function(t){var e=document.createElement("div");return e.innerHTML=t,e.innerText}});
+
+            Rally.launchApp('CustomApp', {
+                name:"Release Notes",
+                parentRepos:"",
+                version:"0.1.1"
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+</body>
+</html>

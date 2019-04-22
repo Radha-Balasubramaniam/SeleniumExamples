@@ -1,0 +1,203 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red42\green0\blue255;\red127\green0\blue85;\red63\green127\blue95;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c49804\c0\c33333;\csgenericrgb\c24706\c49804\c37255;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://docops.ca.com/ca-service-management/17-1/en/ca-service-management-17-1-0-1-release-notes/fixed-issues-17-1-0-1"}}{\fldrslt 
+\f0\fs24 \cf0 https://docops.ca.com/ca-service-management/17-1/en/ca-service-management-17-1-0-1-release-notes/fixed-issues-17-1-0-1}}
+\f0\fs24 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs26 \cf0 menu: [\{text: \cf2 'Send to Doc'\cf0 ,\
+	            	handler: \cf3 this\cf0 ._callConfluence(myDefectStore) \}\
+	            	],\
+\
+\
+\
+Ext.define(\cf2 'CustomApp'\cf0 , \{\
+    extend: \cf2 'Rally.app.App'\cf0 ,\
+    componentCls: \cf2 'app'\cf0 ,\
+    items: [\
+        \{\
+            xtype: \cf2 'container'\cf0 ,\
+            itemId: \cf2 'exportButton'\cf0 \
+        \}],\
+    \
+ \cf4 //   ************* My Code ******************* \cf0 \
+    launch: \cf3 function\cf0 () \{\
+    	 \cf3 this\cf0 ._loadMilestones();   \
+    	 \
+    	 console.log(\cf2 "Inside 'Launch"\cf0 )\
+    \},\
+    \
+   \cf4 /* _callConfluence: function(store) \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf4         \ul var\ulnone  grid = this.down('\ul rallygrid\ulnone ');\cf0 \
+\cf4             //  store = grid.getStore();\cf0 \
+\cf4              console.log("Inside \ul confluence\ulnone  \ul csll\ulnone ");\cf0 \
+\cf4              console.log(store);\cf0 \
+\cf4              console.log("Inside \ul confluence\ulnone  csll2");\cf0 \
+\cf4              console.log(store.data);\cf0 \
+\cf4            \ul var\ulnone   items = store.data.items;\cf0 \
+\cf4         for(\ul var\ulnone  i=0; i<items.length; i++) \{\cf0 \
+\cf4             \ul var\ulnone  title = items[i].data.Name;\cf0 \
+\cf4             \ul var\ulnone  description = items[i].data.Description;\cf0 \
+\cf4             console.log(title);\cf0 \
+\cf4             \cf0 \
+\cf4         \}\cf0 \
+\cf4        this._createConfluencePage();\cf0 \
+\cf4     \},\cf0 \
+\cf4     \cf0 \
+\cf4     _createConfluencePage : function() \{\cf0 \
+\cf4     	console.log("inside \ul confluence\ulnone  page");\cf0 \
+\cf4     	\ul var\ulnone  \ul url\ulnone  = "https://docops-temp.ca.com/rest/api/content";\cf0 \
+\cf4   \cf0 \
+\cf4     	\ul var\ulnone  data = \{\cf0 \
+\cf4     			 "type":"page",\cf0 \
+\cf4                	"title":"My Test Page",\cf0 \
+\cf4     	        "space": \{\cf0 \
+\cf4     	        	"key":"SEOT"\cf0 \
+\cf4     	        		\},\cf0 \
+\cf4     	        		"body": \{\cf0 \
+\cf4     	        	 	"storage": \{\cf0 \
+\cf4     	        	 		"value":"<p>This is a new page</p>",\cf0 \
+\cf4     	        	 		"representation":"storage"\cf0 \
+\cf4     	        	 	\}\cf0 \
+\cf4     	        \}\cf0 \
+\cf4     	 \};\cf0 \
+\cf4     	\cf0 \
+\cf4     	Ext.Ajax.request(\{\cf0 \
+\cf4     		url:url,\cf0 \
+\cf4     		method: 'POST',\cf0 \
+\cf4     		jsonData: data,\cf0 \
+\cf4     		useDefaultXhrHeader: false,\cf0 \
+\cf4     		 withCredentials: true,  \cf0 \
+\cf4              headers : \{ \cf0 \
+\cf4                  'Authorization': 'Basic U2hhbmtlcjpjaGlydQ==',\cf0 \
+\cf4                   'Content-Type': 'application/\ul json\ulnone ;\ul charset\ulnone =UTF-8',\cf0 \
+\cf4              \},\cf0 \
+\cf4     		success: function(response) \{\cf0 \
+\cf4     			console.log("successful");\cf0 \
+\cf4     		\},\cf0 \
+\cf4     		failure: function(response) \{\cf0 \
+\cf4     			console.log("failures");\cf0 \
+\cf4     		\}\cf0 \
+\cf4     	\});\cf0 \
+\cf4     	\cf0 \
+\cf4     	console.log("outside");\cf0 \
+\cf4   \cf0 \
+\cf4     \},*/\cf0 \
+    \
+    _callConfluence: \cf3 function\cf0 () \{\
+        \cf3 var\cf0  grid = \cf3 this\cf0 .down(\cf2 'rallygrid'\cf0 ),\
+              store = grid.getStore();\
+        \cf3 var\cf0   items = store.data.items;\
+        \cf3 var\cf0  result = \cf2 "<table>"\cf0 ;\
+        result += \cf2 "<thead><th><td>Issue Title</td><td>Issue Description</td></th></thead><tbody>"\cf0 ;\
+        \cf3 for\cf0 (\cf3 var\cf0  i=0; i<items.length; i++) \{\
+          result += \cf2 "<tr><td>"\cf0  + \cf3 this\cf0 ._html2text(items[i].data.Name) + \cf2 "</td><td>"\cf0  + \cf3 this\cf0 ._html2text(items[i].data.Description) + \cf2 "</td></tr>"\cf0 ;\
+        \}\
+        result += \cf2 "</tbody></table>"\cf0 ;\
+        console.log(result.replace(\cf2 /\\s/g\cf0 , \cf2 ' '\cf0 ));\
+    \},\
+    \
+    _loadMilestones: \cf3 function\cf0 () \{\
+    	console.log(\cf2 "Inside 'Milestone"\cf0 )\
+    	\cf3 this\cf0 .milestoneComboBox = Ext.create(\cf2 'Rally.ui.combobox.MilestoneComboBox'\cf0 ,\{   		\
+    		fieldLabel: \cf2 'Milestone'\cf0 ,\
+    		hideLabel: \cf3 false\cf0 ,\
+    		labelAlign: \cf2 'right'\cf0 ,\
+    		listeners: \{\
+    			ready: \cf3 function\cf0 (combobox) \{\
+    				\cf3 this\cf0 ._loadData();\
+    			\},\
+    				\
+       			select: \cf3 function\cf0 (combobox, records) \{\
+    				\cf3 this\cf0 ._loadData();\
+    			\},   \
+    		\cf4 //	success: this._onStoreBuilt,\cf0 \
+    			scope: \cf3 this\cf0 \
+    		\}\
+        \});\
+    	\cf3 this\cf0 .add(\cf3 this\cf0 .milestoneComboBox);\
+    \},\
+    \
+    \cf4 //Get data from rally\cf0 \
+    _loadData: \cf3 function\cf0 () \{\
+    	console.log(\cf2 "Inside Load"\cf0 )\
+    	\cf3 var\cf0  selectedMilestone = \cf3 this\cf0 .milestoneComboBox.getRecord().get(\cf2 '_ref'\cf0 );\
+    	\cf4 //console.log("Selected Milestone", selectedMilestone);\cf0 \
+    	\cf3 var\cf0  defectfilters = [\
+    	    \{\
+    	      property: \cf2 'Milestones'\cf0 ,\
+    	      operator: \cf2 '='\cf0 ,\
+    	      value: selectedMilestone\
+            \},\
+           \{\
+          	  property: \cf2 'AffectsDoc'\cf0 ,\
+          	  operator: \cf2 '='\cf0 ,\
+          	  value: \cf2 'true'\cf0 \
+           \}\
+        ];\
+      \
+    	\cf3 if\cf0 (\cf3 this\cf0 .defectStore)\{\
+    		\cf3 this\cf0 .defectStore.setFilter(defectfilters);\
+    		\cf3 this\cf0 .defectStore.load();\
+    	\}\
+    	\cf3 else\cf0  \{\
+    	\cf3 this\cf0 .defectStore =  Ext.create(\cf2 'Rally.data.wsapi.Store'\cf0 , \{\
+    	model: \cf2 'Defect'\cf0 ,\
+    	autoLoad: \cf3 true\cf0 ,\
+        filters: defectfilters,\
+    	listeners: \{\
+    	        load: \cf3 function\cf0 (mystore, mydata, success) \{\
+    	        \cf3 if\cf0 (!\cf3 this\cf0 .myGrid) \{\
+    	        \cf3 this\cf0 ._createGrid(mystore);\
+    	        \}\
+    	        \},\
+    		    scope:\cf3 this\cf0 \
+    	\},\
+    	fetch: [\cf2 'FormattedID'\cf0 , \cf2 'Name'\cf0 , \cf2 'Description'\cf0 , \cf2 'AffectsDoc'\cf0 ]\
+    	\});\
+    	console.log(\cf2 "Store Data :"\cf0 ,\cf3 this\cf0 .defectStore);\
+    	\}\
+    	\
+    \},\
+    \
+    \cf4 //Show the data fetched in a grid\cf0 \
+    _createGrid: \cf3 function\cf0 (myDefectStore) \{\
+    	console.log(\cf2 "Inside 'Grid"\cf0 )\
+    	\cf3 this\cf0 .myGrid = Ext.create(\cf2 'Rally.ui.grid.Grid'\cf0 , \{\
+      		store: myDefectStore,\
+      		columnCfgs: [\
+      			\cf2 'FormattedID'\cf0 , \cf2 'Name'\cf0 , \cf2 'Description'\cf0 , \cf2 'AffectsDoc'\cf0 	\
+      		]\
+        \});\
+     console.log(\cf2 'my grid'\cf0 , \cf3 this\cf0 .myGrid); \
+     \cf3 this\cf0 .add(\cf3 this\cf0 .myGrid);\
+     exportToExcel = \{\
+	            xtype: \cf2 'rallybutton'\cf0 ,\
+	            handler: \cf3 this\cf0 ._callConfluence,\
+	            rtl: \cf3 true\cf0 ,\
+	            iconCls: \cf2 'icon-export'\cf0 ,\
+	            toolTip:\cf2 'Export to Excel'\cf0 ,\
+	         \cf4 /*   menu: [\{text: 'Send to Doc',\cf0 \
+\cf4 	            	handler: this._callConfluence(myDefectStore) \}\cf0 \
+\cf4 	            	],	  */\cf0           \
+	            layout: \{\
+	                type: \cf2 'hbox'\cf0 ,\
+	                align: \cf2 'right'\cf0 \
+	            \},\
+	            style: \{\
+	                float: \cf2 'right'\cf0 \
+	            \},\
+	            scope: \cf3 this\cf0            \
+	        \};\
+	        \cf3 this\cf0 .down(\cf2 '#exportButton'\cf0 ).add(exportToExcel);\
+    \}, \
+\
+\}); }
